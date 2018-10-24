@@ -1,0 +1,21 @@
+<div class="container">
+  <mat-progress-bar mode="indeterminate" class="mat-elevation-z4" color="accent" *ngIf="isLoading"></mat-progress-bar>
+  <mat-card class="mat-elevation-z4">
+    <mat-card-content class="drop-zone" fxLayout="row" fxLayoutAlign="center center" [ngClass]="{'drop-zone-hover': hasBaseDropZoneOver}">
+      <input class="input-file" type="file" ng2FileDrop ng2FileSelect [uploader]="uploader" (fileOver)="fileOverBase($event)" />
+      <section class="drop-box" [style.height.%]="50" fxLayout="column-reverse" fxLayoutAlign="center center">
+        <h6 [style.font-size.px]="24">Arrastra o selecciona el .ZIP</h6>
+        <mat-icon class="drop-box" color="primary" inline="true">cloud_upload</mat-icon>
+      </section>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="mat-elevation-z4" *ngFor="let item of uploader.queue" [style.margin-top.px]="10" fxLayout="row" fxLayoutAlign="space-between center" [style.padding.px]="12">
+    <div>
+      <p>{{ item?.file?.name | uppercase }}</p>
+    </div>
+    <div>
+      <button mat-raised-button color="accent" (click)="uploadZip(item)" [disabled]="isLoading">SUBIR ARCHIVO</button>
+      <button mat-raised-button color="warn" type="button" class="btn btn-danger btn-xs" (click)="item.remove()" [disabled]="isLoading">ELIMINAR</button>
+    </div>
+  </mat-card>
+</div>

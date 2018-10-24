@@ -1,0 +1,20 @@
+{
+  "generator-ngx-rocket": {
+    "version": "5.0.0",
+    "props": {
+      "appName": "realty app",
+      "target": [
+        "web"
+      ],
+      "pwa": true,
+      "ui": "material",
+      "layout": "side-menu",
+      "auth": false,
+      "lazy": true,
+      "angulartics": false,
+      "projectName": "realty-app",
+      "packageManager": "npm",
+      "mobile": []
+    }
+  }
+}

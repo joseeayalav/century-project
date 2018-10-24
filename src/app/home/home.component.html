@@ -1,0 +1,105 @@
+<div class="container" fxLayout.gt-sm="row" fxLayout.lt-sm="column" fxLayoutGap="1em">
+  <mat-card fxFlex="50%" class="mat-elevation-z4" [style.min-height.%]="100">
+    <mat-card-header>
+      <mat-card-title fxLayout="row" fxLayoutAlign="start center">
+        <h2>Registrar Inmueble</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayout="row" fxLayoutAlign="center start">
+      <mat-progress-spinner mode="indeterminate" color="accent" *ngIf="isLoading">
+      </mat-progress-spinner>
+      <form novalidate fxLayout="column" [formGroup]="recordsForm" *ngIf="!isLoading" [style.width.%]="100">
+        <mat-form-field appearance="outline">
+          <mat-label>Oficina</mat-label>
+          <input type="text" matInput placeholder="Oficina" formControlName="office" />
+          <mat-icon matPrefix>home</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Descripción</mat-label>
+          <textarea matInput placeholder="Descripción" formControlName="description"></textarea>
+          <mat-icon matPrefix>mode_comment</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Teléfono</mat-label>
+          <input type="number" matInput placeholder="Teléfono" formControlName="phone" maxlength="11" minlength="10" />
+          <mat-icon matPrefix>phone</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Dirección</mat-label>
+          <textarea matInput placeholder="Dirección" formControlName="address"></textarea>
+          <mat-icon matPrefix>place</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Precio</mat-label>
+          <input type="number" matInput placeholder="Precio" formControlName="price" />
+          <mat-icon matPrefix>attach_money</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Vendedor</mat-label>
+          <input type="text" matInput placeholder="Vendedor" formControlName="adviser" />
+          <mat-icon matPrefix>person</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo propiedad</mat-label>
+          <mat-select placeholder="Tipo propiedad" formControlName="propertyType">
+            <mat-option value="ca">Casa</mat-option>
+            <mat-option value="ap">Apartamento</mat-option>
+            <mat-option value="ga">Galpon</mat-option>
+            <mat-option value="of">Oficina</mat-option>
+            <mat-option value="an">Anexo</mat-option>
+            <mat-option value="th">Town House</mat-option>
+            <mat-option value="te">Terreno</mat-option>
+          </mat-select>
+          <mat-icon matPrefix>filter_list</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo requerimiento</mat-label>
+          <mat-select placeholder="Tipo requerimiento" formControlName="requirementsType">
+            <mat-option value="ve">Venta</mat-option>
+            <mat-option value="al">Alquiler</mat-option>
+          </mat-select>
+          <mat-icon matPrefix>filter_list</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Requerimiento u oferta</mat-label>
+          <mat-select placeholder="Tipo requerimiento" formControlName="saleType">
+            <mat-option value="of">Oferta</mat-option>
+            <mat-option value="re">Requirimiento</mat-option>
+          </mat-select>
+          <mat-icon matPrefix>filter_list</mat-icon>
+        </mat-form-field>
+
+      </form>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
+      <button mat-button color="accent" [disabled]="!recordsForm.valid || isLoading" (click)="createRecord()">ENVIAR REGISTRO</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card fxFlex="50%" class="mat-elevation-z4" [style.min-height.%]="100" fxLayout="column" fxLayoutAlign="start space-between">
+    <mat-card-header>
+      <mat-card-title fxLayout="row" fxLayoutAlign="start center">
+        <h2>Mensajes</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayout="row" fxLayoutAlign="center start">
+      <mat-progress-spinner mode="indeterminate" color="accent" *ngIf="isLoading"></mat-progress-spinner>
+      <mat-form-field appearance="outline" [style.width.%]="100" *ngIf="!isLoading">
+        <textarea [style.min-height.%]="100" matInput matTextareaAutosize matAutosizeMinRows="40" matAutosizeMaxRows="40" placeholder="Todos los mensajes se muestran aquí"
+          [value]="message"></textarea>
+        <mat-icon matPrefix>mode_comment</mat-icon>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="end center" [style.margin-top]="'auto'">
+      <button mat-button color="accent" [disabled]="isLoading || message === undefined" (click)="getMessage()">SIGUIENTE MENSAJE</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

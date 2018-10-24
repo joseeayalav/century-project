@@ -1,0 +1,78 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<div mat-dialog-content>
+  <form novalidate fxLayout="column" [formGroup]="recordsForm" [style.width.%]="100">
+    <mat-form-field appearance="outline">
+      <mat-label>Oficina</mat-label>
+      <input type="text" matInput placeholder="Oficina" formControlName="office" />
+      <mat-icon matPrefix>home</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput placeholder="Descripción" formControlName="description"></textarea>
+      <mat-icon matPrefix>mode_comment</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Teléfono</mat-label>
+      <input type="number" matInput placeholder="Teléfono" formControlName="phone" maxlength="11" minlength="10" />
+      <mat-icon matPrefix>phone</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Dirección</mat-label>
+      <textarea matInput placeholder="Dirección" formControlName="address"></textarea>
+      <mat-icon matPrefix>place</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Precio</mat-label>
+      <input type="number" matInput placeholder="Precio" formControlName="price" />
+      <mat-icon matPrefix>attach_money</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Vendedor</mat-label>
+      <input type="text" matInput placeholder="Vendedor" formControlName="adviser" />
+      <mat-icon matPrefix>person</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tipo propiedad</mat-label>
+      <mat-select placeholder="Tipo propiedad" formControlName="propertyType">
+        <mat-option value="ca">Casa</mat-option>
+        <mat-option value="ap">Apartamento</mat-option>
+        <mat-option value="ga">Galpon</mat-option>
+        <mat-option value="of">Oficina</mat-option>
+        <mat-option value="an">Anexo</mat-option>
+        <mat-option value="th">Town House</mat-option>
+        <mat-option value="te">Terreno</mat-option>
+      </mat-select>
+      <mat-icon matPrefix>filter_list</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tipo requerimiento</mat-label>
+      <mat-select placeholder="Tipo requerimiento" formControlName="requirementsType">
+        <mat-option value="ve">Venta</mat-option>
+        <mat-option value="al">Alquiler</mat-option>
+      </mat-select>
+      <mat-icon matPrefix>filter_list</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Requerimiento u oferta</mat-label>
+      <mat-select placeholder="Tipo requerimiento" formControlName="saleType">
+        <mat-option value="of">Oferta</mat-option>
+        <mat-option value="re">Requirimiento</mat-option>
+      </mat-select>
+      <mat-icon matPrefix>filter_list</mat-icon>
+    </mat-form-field>
+
+  </form>
+</div>
+<div mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+  <button mat-button color="accent" (click)="onEditRecord()" *ngIf="recordsForm.enabled">ACTUALIZAR</button>
+  <button mat-button color="accent" (click)="onEditRecord()" *ngIf="recordsForm.disabled">EDITAR</button>
+  <button mat-button color="primary" (click)="onCloseDialog()">ACEPTAR</button>
+</div>

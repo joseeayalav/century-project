@@ -1,0 +1,43 @@
+<div fxFlex>
+  <mat-sidenav-container fxFill>
+    <mat-sidenav #sidenav [mode]="isMobile ? 'over' : 'side'" [opened]="!isMobile" [disableClose]="!isMobile" ngClass.gt-sm="has-border">
+      <mat-toolbar class="mat-elevation-z6" color="primary">
+        <span>Century Project</span>
+      </mat-toolbar>
+      <nav>
+        <mat-list>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/home" routerLinkActive="active" (click)="isMobile && sidenav.close()">
+            <span>Registro Inmueble</span>
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/records" routerLinkActive="active" (click)="isMobile && sidenav.close()">
+            <span>Busqueda Inmueble</span>
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/import-messages" routerLinkActive="active" (click)="isMobile && sidenav.close()">
+            <span>Importar Mensajes</span>
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item (click)="isMobile && sidenav.close();openDialog()" [style.cursor]="'pointer'">
+            <span>Eliminar mensajes</span>
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/about" routerLinkActive="active" (click)="isMobile && sidenav.close()">
+            <span>About</span>
+          </a>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary" class="mat-elevation-z6 sticky">
+        <button class="menu-button" mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>{{title}}</span>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

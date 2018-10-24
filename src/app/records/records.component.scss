@@ -1,0 +1,17 @@
+.container {
+  padding: 1em;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+
+.loading {
+  font-size: 18px;
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+  color: #444;
+}
+
+.mat-row-height {
+  max-height: 48px !important;
+}
